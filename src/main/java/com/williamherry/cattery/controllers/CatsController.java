@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/cats")
 public class CatsController {
 	@GetMapping("")
-	public String hello() {
+	public String indexPage() {
 		return "cats/index";
+	}
+
+	@GetMapping("/new")
+	public String newPage() {
+		return "cats/new";
 	}
 }
