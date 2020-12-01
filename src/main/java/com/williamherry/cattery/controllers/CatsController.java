@@ -34,13 +34,11 @@ public class CatsController {
 	}
 
 	@PostMapping("") // Map ONLY POST Requests
-	public @ResponseBody String addNewUser(@RequestParam String name) {
+	public  String addNewUser(Cat cat, Model model) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
-
-		Cat cat = new Cat();
-		cat.setName(name);
 		catRepository.save(cat);
-		return "Saved";
+		model.addAttribute("cat", cat);
+		return "redirect:cats";
 	}
 }
